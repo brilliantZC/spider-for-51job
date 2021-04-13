@@ -44,20 +44,20 @@ def showjob_detail_then():
     conn.close()
     return render_template("job_detail.html",datalist=datalist)
 
-@app.route('/score')
-def showscore():
-    score = [] # 评分
+@app.route('/job_pic')
+def showjob_pic():
+    job_classify = [] # 评分
     num = []   # 评分的电影数
-    conn = sqlite3.connect("movie.db")
+    conn = sqlite3.connect("job.db")
     cur = conn.cursor()
-    sql = "select score,count(score) from movie250 group by score"
+    sql = "select job_name,count(job_name) from jobinfo "
     data = cur.execute(sql)
     for item in data:
         score.append(item[0])
         num.append(item[1])
     cur.close()
     conn.close()
-    return render_template("score.html", score=score, num=num)
+    return render_template("job_pic.html", score=score, num=num)
 
 @app.route('/word')
 def showword():

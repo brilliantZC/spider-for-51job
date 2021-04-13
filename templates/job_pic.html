@@ -7,7 +7,7 @@
      <!-- 引入 ECharts 文件 -->
     <script src="static/assets/js/echarts.min.js"></script>
 
-  <title>豆瓣Top250数据可视化</title>
+  <title>合肥IT工作数据可视化</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -63,8 +63,8 @@
       <nav class="nav-menu float-right d-none d-lg-block">
         <ul>
           <li class="active"><a href="/index">首页 <i class="la la-angle-down"></i></a></li>
-          <li><a href="/movie">电影 </a></li>
-          <li><a href="/score">评分</a></li>
+          <li><a href="/job_detail_first">工作数据 </a></li>
+          <li><a href="/job_pic">分析图表</a></li>
           <li><a href="/word">词云</a></li>
           <li><a href="/team">团队</a></li>
         </ul>
@@ -98,35 +98,39 @@
     var myChart = echarts.init(dom);
     var app = {};
 
-    var option;
     option = {
-        color: ['#3398DB'],
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'shadow'
-            }
-        },
-        grid: {
-            left: '6%',
-            top: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'category',
-            data: {{ score }}
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [{
-            data: {{ num }},
-            barWidth: '60%',
-            type: 'bar'
-        }]
-    };
-
+    title: {
+        text: '合肥IT工作类别',
+        subtext: '数据来自51job'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01]
+    },
+    yAxis: {
+        type: 'category',
+        data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)']
+    },
+    series: [
+        {
+            name: '2021年',
+            type: 'bar',
+            data: [18203, 23489, 29034, 104970, 131744, 630230]
+        }
+        ]
+    }
     if (option && typeof option === 'object') {
         myChart.setOption(option);
     }
