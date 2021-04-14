@@ -28,7 +28,7 @@ def getData(url):
             web.switch_to.window(web.window_handles[-1])
             try:
                 job_detail = web.find_element_by_xpath('/html/body/div[3]/div[2]/div[3]/div[1]/div').text.strip().replace('\n', '').replace('\r', '')\
-                    .replace('工作职责:', '').replace('专业要求:', '').replace('岗位职责：','').replace('综合素质:','').replace('"', '').replace('“','')\
+                    .replace('工作职责', '').replace('专业要求', '').replace('岗位职责','').replace('综合素质','').replace(':', '').replace('：', '').replace('"', '').replace('“','')\
                     .replace('1.','').replace('1、','').replace('2.','').replace('2、','').replace('3.','').replace('3、','').replace('4.','').replace('4、','').replace('5.','').replace('5、','')\
                     .replace('6.','').replace('6、','').replace('7.', '').replace('7、', '').replace('8.','').replace('8、','').replace('9.','').replace('9、','')
             except NoSuchElementException as e:
