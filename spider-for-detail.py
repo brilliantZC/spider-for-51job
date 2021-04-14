@@ -10,9 +10,13 @@ from selenium.webdriver import Chrome
 from selenium.common.exceptions import NoSuchElementException
 import time
 import sqlite3  #进行SQLite数据库操作
+from selenium.webdriver.chrome.options import Options
 
 def getData(url):
-    web = Chrome()
+    opt = Options()
+    opt.add_argument("--headless")
+    opt.add_argument("--disbale-gpu")
+    web = Chrome(options=opt)  # 把参数配置设置在浏览器中，让其不显示浏览器
     web.get(url)
     datalist = []
     for i in range(2,50):
